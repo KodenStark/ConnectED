@@ -2,10 +2,6 @@ import { Injectable, signal } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import { User, getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
-@Injectable({
-  providedIn: 'root',
-})
-
 // TODO: Replace the following with your app's Firebase configuration
 const firebaseConfig = {
   //...
