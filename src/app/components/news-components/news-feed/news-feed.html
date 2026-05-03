@@ -1,1 +1,62 @@
-<p>news-feed works!</p>
+<div class="feed-container">
+	<header class="feed-header">
+		<p class="feed-kicker">Campus Pulse</p>
+		<h1>Upcoming Events</h1>
+		<p class="feed-subtitle">Live updates from NDSU events happening over the next month.</p>
+	</header>
+
+	@if (loading()) {
+		<p class="state-message">Loading events...</p>
+	} @else if (error()) {
+		<p class="state-message">{{ error() }}</p>
+	} @else {
+		@for (event of events(); track event.id) {
+			<article class="event-card">
+				<header class="event-header">
+					<div>
+						<h2 class="event-title">{{ event.name }}</h2>
+						<p class="event-org">Hosted by {{ event.organizationName }}</p>
+					</div>
+					@if (event.rsvpTotal > 0) {
+						<span class="org-badge">{{ event.rsvpTotal }} going</span>
+					}
+				</header>
+
+				<p class="event-date">
+					{{ formatStartsOn(event.startsOn) }}
+					-
+					{{ formatEndsOn(event.endsOn) }}
+				</p>
+
+				@if (event.location) {
+					<p class="event-location">{{ event.location }}</p>
+				}
+
+				<p class="event-description">{{ descriptionPreview(event.description) }}</p>
+
+				@if (event.theme) {
+					<p class="event-theme">{{ formatTheme(event.theme) }}</p>
+				}
+
+				@if (categories(event).length > 0) {
+					<div class="category-row">
+						@for (category of categories(event); track category) {
+							<span class="category-chip">{{ category }}</span>
+						}
+					</div>
+				}
+
+				<a
+					class="read-more"
+					[href]="eventLink(event.id)"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					Read More
+				</a>
+			</article>
+		} @empty {
+			<p class="state-message">No upcoming events found.</p>
+		}
+	}
+</div>
