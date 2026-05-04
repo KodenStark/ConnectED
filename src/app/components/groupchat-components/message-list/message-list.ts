@@ -1,53 +1,68 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FirebaseService } from '../../../services/firebase';
 
 @Component({
   selector: 'app-message-list',
-  imports: [FormsModule],
+  imports: [],
   templateUrl: './message-list.html',
   styleUrl: './message-list.css',
 })
 export class MessageList {
-  // Grabs the community id from the URL
   private route = inject(ActivatedRoute);
+  private firebaseService = inject(FirebaseService);
+
+  // Grabs the community id from the URL
   communityId = this.route.snapshot.paramMap.get('id');
 
-  // course group chats
-  courseGroupChats = [
-    {
-      id: 'c1',
-      name: 'CS101 - Intro to Programming',
-      courseNumber: 'CS101',
-      members: 45,
-      chatType: 'Course',
-    },
-    {
-      id: 'c2',
-      name: 'CS201 - Data Structures',
-      courseNumber: 'CS201',
-      members: 38,
-      chatType: 'Course',
-    },
-    {
-      id: 'c3',
-      name: 'CS301 - Algorithms',
-      courseNumber: 'CS301',
-      members: 30,
-      chatType: 'Course',
-    },
-  ];
+  // Group chats loaded from Firebase
+  courseGroupChats = signal<
+    { id: string; name: string; courseNumber: string; members: string[] }[]
+  >([]);
+  userGroupChats = signal<{ id: string; name: string; members: string[] }[]>([]);
 
-  //  group chats
-  userGroupChats = [
-    { id: 'u1', name: 'Study Group for Finals', members: 12, chatType: 'User' },
-    { id: 'u2', name: 'CS Club General Chat', members: 25, chatType: 'User' },
-    { id: 'u3', name: 'Homework Help', members: 18, chatType: 'User' },
-  ];
+  async ngOnInit(): Promise<void> {
+    await this.loadGroupChats();
+  }
 
-  // Join group chat
-  joinGroupChat(groupChatId: string) {
-    console.log('Joining group chat:', groupChatId);
-    // we need to add firebase logic here
+  private async loadGroupChats(): Promise<void> {
+    const snapshot = await this.firebaseService.getGroupChats(this.communityId!);
+    if (!snapshot) return;
+
+    const course: { id: string; name: string; courseNumber: string; members: string[] }[] = [];
+    const user: { id: string; name: string; members: string[] }[] = [];
+
+    snapshot.docs.forEach((doc) => {
+      const data = doc.data();
+
+      // Only load group chats that belong to this community
+      if (data['communityId'] !== this.communityId) return;
+
+      if (data['chatType'] === 'Course') {
+        course.push({
+          id: doc.id,
+          name: String(data['name'] ?? ''),
+          courseNumber: String(data['courseNumber'] ?? ''),
+          members: data['users'] ?? [],
+        });
+      } else {
+        user.push({
+          id: doc.id,
+          name: String(data['name'] ?? ''),
+          members: data['users'] ?? [],
+        });
+      }
+    });
+
+    this.courseGroupChats.set(course);
+    this.userGroupChats.set(user);
+  }
+
+  async joinGroupChat(groupChatId: string): Promise<void> {
+    const success = await this.firebaseService.joinGroupChat(groupChatId);
+    if (success) {
+      console.log('Successfully joined group chat:', groupChatId);
+      await this.loadGroupChats(); 
+    }
   }
 }

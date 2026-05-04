@@ -9,6 +9,8 @@ import {
   QuerySnapshot,
   setDoc,
   doc,
+  updateDoc,
+  arrayUnion,
 } from 'firebase/firestore';
 import {
   User,
@@ -210,6 +212,39 @@ export class FirebaseService {
         this.currentFirestoreError.set(error.code + ': ' + error.message);
       }
       return null;
+    }
+  }
+
+  async getGroupChats(communityId: string): Promise<QuerySnapshot | null> {
+    try {
+      const request = await getDocs(collection(db, 'groupchats'));
+      this.currentFirestoreError.set(null);
+      return request;
+    } catch (error: unknown) {
+      if (error instanceof FirestoreError) {
+        this.currentFirestoreError.set(error.code + ': ' + error.message);
+      }
+      return null;
+    }
+  }
+
+  async joinGroupChat(groupChatId: string): Promise<boolean> {
+    if (!this.currentUser()) {
+      this.currentFirestoreError.set('No authenticated user.');
+      return false;
+    }
+
+    try {
+      await updateDoc(doc(db, 'groupchats', groupChatId), {
+        users: arrayUnion(this.currentUser()!.uid), // adds user ID to the users array
+      });
+      this.currentFirestoreError.set(null);
+      return true;
+    } catch (error: unknown) {
+      if (error instanceof FirestoreError) {
+        this.currentFirestoreError.set(error.code + ': ' + error.message);
+      }
+      return false;
     }
   }
 }
