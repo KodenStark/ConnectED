@@ -1,7 +1,7 @@
 .dashboard-container {
   min-height: 100vh;
-  background-color: #1a2b1c;
-  color: white;
+  background-color: var(--ce-bg-page);
+  color: var(--ce-text-primary);
   padding: 32px 24px;
   overflow-y: auto;
 }
@@ -13,12 +13,12 @@
 .dashboard-title {
   font-size: 1.8rem;
   font-weight: bold;
-  color: white;
+  color: var(--ce-text-primary);
   margin: 0 0 4px;
 }
 
 .dashboard-subtitle {
-  color: #aaa;
+  color: var(--ce-text-sub);
   font-size: 0.9rem;
   margin: 0;
 }

@@ -1,1 +1,105 @@
-/* You can add global styles to this file, and also import other style files */
+/* ════════════════════════════════════════════════════════════════
+   ConnectED — Global Design Tokens & Shared Styles
+   All brand colors, spacing, and radii are defined here.
+   Component CSS files reference these vars; never hard-code colors.
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── Design Tokens ───────────────────────────────────────────── */
+:root {
+  /* Surface scale */
+  --ce-bg-page:        #1a2b1c;
+  --ce-bg-surface:     #263829;
+  --ce-bg-card:        #2e4832;
+  --ce-bg-card-hover:  #364f3a;
+  --ce-bg-input:       #1e2d20;
+
+  /* Borders */
+  --ce-border:         #3d5c42;
+  --ce-border-focus:   #567955;
+
+  /* Brand accents */
+  --ce-gold:           #b79c4b;
+  --ce-green:          #567955;
+  --ce-green-dark:     #3c643c;
+  --ce-navy:           #1f305e;
+
+  /* Typography */
+  --ce-text-primary:   #ffffff;
+  --ce-text-body:      #dddddd;
+  --ce-text-sub:       #aaaaaa;
+  --ce-text-muted:     #888888;
+
+  /* Status */
+  --ce-error-bg:       #5c2020;
+  --ce-error-text:     #ffaaaa;
+  --ce-success-text:   #567955;
+
+  /* Border-radius */
+  --ce-radius-sm:      4px;
+  --ce-radius-md:      6px;
+  --ce-radius-lg:      10px;
+  --ce-radius-xl:      12px;
+  --ce-radius-pill:    999px;
+
+  /* Transition */
+  --ce-transition:     0.2s ease;
+}
+
+/* ── Base ────────────────────────────────────────────────────── */
+body {
+  background-color: var(--ce-bg-page);
+  color: var(--ce-text-primary);
+}
+
+/* ── Bootstrap 5 Overrides ───────────────────────────────────── */
+.btn-primary {
+  --bs-btn-bg:                  var(--ce-gold);
+  --bs-btn-border-color:        var(--ce-gold);
+  --bs-btn-hover-bg:            var(--ce-green);
+  --bs-btn-hover-border-color:  var(--ce-green);
+  --bs-btn-active-bg:           var(--ce-green-dark);
+  --bs-btn-active-border-color: var(--ce-green-dark);
+}
+
+.btn-outline-success {
+  --bs-btn-color:               var(--ce-green);
+  --bs-btn-border-color:        var(--ce-green);
+  --bs-btn-hover-bg:            var(--ce-green);
+  --bs-btn-hover-border-color:  var(--ce-green);
+  --bs-btn-active-bg:           var(--ce-green-dark);
+}
+
+.btn-outline-secondary {
+  --bs-btn-color:               var(--ce-text-sub);
+  --bs-btn-border-color:        var(--ce-border);
+  --bs-btn-hover-bg:            var(--ce-bg-card);
+  --bs-btn-hover-border-color:  var(--ce-green);
+  --bs-btn-hover-color:         var(--ce-text-primary);
+}
+
+.btn-secondary {
+  --bs-btn-bg:                  #555555;
+  --bs-btn-border-color:        #555555;
+  --bs-btn-hover-bg:            #666666;
+  --bs-btn-hover-border-color:  #666666;
+}
+
+/* ── Dark Bootstrap form controls ────────────────────────────── */
+.form-control,
+.form-select {
+  background-color: var(--ce-bg-input);
+  color:            var(--ce-text-primary);
+  border-color:     var(--ce-border);
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: var(--ce-bg-input);
+  color:            var(--ce-text-primary);
+  border-color:     var(--ce-green);
+  box-shadow: 0 0 0 0.2rem rgba(86, 121, 85, 0.25);
+}
+
+.form-control::placeholder {
+  color: var(--ce-text-muted);
+}

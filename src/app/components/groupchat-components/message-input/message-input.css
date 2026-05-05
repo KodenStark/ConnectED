@@ -3,16 +3,16 @@
   flex-direction: column;
   gap: 8px;
   padding: 12px 16px;
-  background-color: #263829;
-  border-top: 1px solid #3d5c42;
+  background-color: var(--ce-bg-surface);
+  border-top: 1px solid var(--ce-border);
 }
 
 .composer-input {
   width: 100%;
-  background-color: #1e2d20;
-  color: #e0e0e0;
-  border: 1px solid #3d5c42;
-  border-radius: 6px;
+  background-color: var(--ce-bg-input);
+  color: var(--ce-text-body);
+  border: 1px solid var(--ce-border);
+  border-radius: var(--ce-radius-md);
   padding: 10px 12px;
   font-size: 0.95rem;
   resize: vertical;
@@ -23,7 +23,7 @@
 
 .composer-input:focus {
   outline: none;
-  border-color: rgb(86, 134, 85);
+  border-color: var(--ce-green);
 }
 
 .composer-input:disabled {
@@ -39,24 +39,24 @@
 }
 
 .composer-hint {
-  color: #888;
+  color: var(--ce-text-muted);
   font-size: 0.82rem;
   flex: 1;
 }
 
 .composer-btn {
-  background-color: rgb(183, 156, 75);
-  color: white;
+  background-color: var(--ce-gold);
+  color: #fff;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--ce-radius-md);
   padding: 8px 20px;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color var(--ce-transition);
 }
 
 .composer-btn:hover:not(:disabled) {
-  background-color: rgb(86, 134, 85);
+  background-color: var(--ce-green);
 }
 
 .composer-btn:disabled {

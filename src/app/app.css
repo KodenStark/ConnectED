@@ -1,28 +1,32 @@
 #nav {
-  background-color: #1f305e;
+  background-color: var(--ce-navy);
 }
+
 #connect {
-  color: rgb(183, 156, 75);
+  color: var(--ce-gold);
   letter-spacing: -1px;
 }
+
 #ed {
   background-color: #52661f;
-  color: white;
+  color: #fff;
   padding: 2px 8px;
-  border-radius: 6px;
+  border-radius: var(--ce-radius-md);
   margin-left: 2px;
 }
+
 #logo {
   display: flex;
   align-items: center;
   font-family: 'Verdana', sans-serif;
   font-size: 22px;
   font-weight: bold;
-  background-color: white;
+  background-color: #fff;
   border-radius: 8px;
   padding: 6px 12px !important;
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
+
 .navbar-link {
   text-decoration: none;
 }
@@ -31,10 +35,10 @@
   color: #5dbb63;
   font-weight: 600;
   padding: 8px 16px;
-  transition: color 0.3s ease;
+  transition: color var(--ce-transition);
 }
 
 .custom-link:hover {
-  color: #ffffff !important;
+  color: #fff !important;
   border-bottom: 2px solid #5dbb63;
 }

@@ -1,7 +1,7 @@
 .community-container {
   min-height: 100vh;
-  background-color: beige;
-  color: white;
+  background-color: var(--ce-bg-page);
+  color: var(--ce-text-primary);
   padding: 30px;
 }
 
@@ -9,7 +9,7 @@
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 24px;
-  color: black; /* dark text on beige background */
+  color: var(--ce-text-primary);
 }
 
 /* Search Bar */
@@ -17,16 +17,16 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background-color: white;
-  border: 1px solid rgb(183, 156, 75);
-  border-radius: 8px;
+  background-color: var(--ce-bg-card);
+  border: 1px solid var(--ce-border);
+  border-radius: var(--ce-radius-lg);
   padding: 10px 16px;
   margin-bottom: 30px;
   max-width: 500px;
 }
 
 .search-bar i {
-  color: rgb(183, 156, 75);
+  color: var(--ce-gold);
   font-size: 1rem;
 }
 
@@ -34,13 +34,13 @@
   background: none;
   border: none;
   outline: none;
-  color: black;
+  color: var(--ce-text-primary);
   font-size: 1rem;
   width: 100%;
 }
 
 .search-bar input::placeholder {
-  color: #aaa;
+  color: var(--ce-text-muted);
 }
 
 /* Communities Grid */
@@ -52,18 +52,18 @@
 
 /* Community Card */
 .community-card {
-  background-color: white;
-  border-radius: 10px;
+  background-color: var(--ce-bg-card);
+  border-radius: var(--ce-radius-lg);
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  border: 1px solid rgb(183, 156, 75);
-  transition: border-color 0.2s ease;
+  border: 1px solid var(--ce-border);
+  transition: border-color var(--ce-transition);
 }
 
 .community-card:hover {
-  border-color: rgb(86, 134, 85); /* green on hover, matches your icon hover */
+  border-color: var(--ce-green);
 }
 
 .card-header {
@@ -76,12 +76,12 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: rgb(183, 156, 75); /* gold */
+  background-color: var(--ce-gold);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.4rem;
-  color: white;
+  color: #fff;
 }
 
 .card-info {
@@ -93,17 +93,17 @@
 .community-name {
   font-size: 1.1rem;
   font-weight: bold;
-  color: black;
+  color: var(--ce-text-primary);
   margin: 0;
 }
 
 .member-count {
   font-size: 0.8rem;
-  color: #777;
+  color: var(--ce-text-muted);
 }
 
 .community-description {
-  color: #444;
+  color: var(--ce-text-body);
   font-size: 0.9rem;
   line-height: 1.5;
   margin: 0;
@@ -112,18 +112,18 @@
 /* Join Button */
 .join-btn {
   margin-top: auto;
-  background-color: rgb(183, 156, 75); /* gold */
-  color: white;
+  background-color: var(--ce-gold);
+  color: #fff;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--ce-radius-md);
   padding: 10px;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color var(--ce-transition);
 }
 
 .join-btn:hover {
-  background-color: rgb(86, 134, 85); /* green on hover */
+  background-color: var(--ce-green);
 }
 
 .section {
@@ -133,10 +133,10 @@
 .section-title {
   font-size: 1.4rem;
   font-weight: bold;
-  color: black;
+  color: var(--ce-text-primary);
   margin-bottom: 20px;
   padding-bottom: 8px;
-  border-bottom: 2px solid rgb(183, 156, 75);
+  border-bottom: 2px solid var(--ce-gold);
 }
 
 /* Page header row */
@@ -155,28 +155,28 @@
 
 /* Create community button */
 .create-btn {
-  background-color: rgb(86, 134, 85);
-  color: white;
+  background-color: var(--ce-green);
+  color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--ce-radius-lg);
   padding: 10px 18px;
   font-size: 0.95rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 6px;
-  transition: background-color 0.2s ease;
+  transition: background-color var(--ce-transition);
 }
 
 .create-btn:hover {
-  background-color: rgb(60, 100, 60);
+  background-color: var(--ce-green-dark);
 }
 
 /* Create form card */
 .create-form-card {
-  background-color: white;
-  border: 1px solid rgb(183, 156, 75);
-  border-radius: 10px;
+  background-color: var(--ce-bg-card);
+  border: 1px solid var(--ce-gold);
+  border-radius: var(--ce-radius-lg);
   padding: 24px;
   margin-bottom: 30px;
   max-width: 560px;
@@ -185,13 +185,13 @@
 .form-title {
   font-size: 1.2rem;
   font-weight: bold;
-  color: black;
+  color: var(--ce-text-primary);
   margin-bottom: 12px;
 }
 
 .form-hint {
   font-size: 0.85rem;
-  color: #555;
+  color: var(--ce-text-sub);
   margin-bottom: 16px;
 }
 
@@ -205,53 +205,57 @@
 .form-group label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #333;
+  color: var(--ce-text-sub);
 }
 
 .required {
-  color: #c0392b;
+  color: #e05;
 }
 
 .form-input {
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  background-color: var(--ce-bg-input);
+  color: var(--ce-text-primary);
+  border: 1px solid var(--ce-border);
+  border-radius: var(--ce-radius-md);
   padding: 8px 12px;
   font-size: 0.95rem;
   outline: none;
   resize: vertical;
-  transition: border-color 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color var(--ce-transition);
 }
 
 .form-input:focus {
-  border-color: rgb(183, 156, 75);
+  border-color: var(--ce-green);
 }
 
 .form-error {
-  color: #c0392b;
+  color: var(--ce-error-text);
   font-size: 0.85rem;
   margin-bottom: 10px;
 }
 
 .form-success {
-  color: rgb(86, 134, 85);
+  color: var(--ce-success-text);
   font-size: 0.85rem;
   margin-bottom: 10px;
   font-weight: 600;
 }
 
 .submit-btn {
-  background-color: rgb(183, 156, 75);
-  color: white;
+  background-color: var(--ce-gold);
+  color: #fff;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--ce-radius-md);
   padding: 10px 20px;
   font-size: 0.95rem;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color var(--ce-transition);
 }
 
 .submit-btn:hover:not(:disabled) {
-  background-color: rgb(86, 134, 85);
+  background-color: var(--ce-green);
 }
 
 .submit-btn:disabled {

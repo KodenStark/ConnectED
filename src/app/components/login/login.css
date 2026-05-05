@@ -1,59 +1,48 @@
-#connect {
-  color: rgb(183, 156, 75);
-  letter-spacing: -1px;
-}
-#ed {
-  background-color: #52661f;
-  color: white;
-  padding: 2px 8px;
-  border-radius: 6px;
-  margin-left: 2px;
-}
-
+/* Logo displayed inside the login form */
 #logo {
   width: fit-content;
-  margin: 0 auto 1rem;
+  margin: 0 auto 1.5rem;
   display: flex;
   align-items: center;
   font-family: 'Verdana', sans-serif;
   font-size: 22px;
   font-weight: bold;
-  background-color: white;
+  background-color: #fff;
   border-radius: 8px;
   padding: 6px 12px !important;
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
+
+#connect {
+  color: var(--ce-gold);
+  letter-spacing: -1px;
+}
+
+#ed {
+  background-color: #52661f;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: var(--ce-radius-md);
+  margin-left: 2px;
+}
+
 .navbar-link {
   text-decoration: none;
 }
 
-.custom-link {
-  color: #5dbb63;
-  font-weight: 600;
-  padding: 8px 16px;
-  transition: color 0.3s ease;
-}
-
-.custom-link:hover {
-  color: #ffffff !important;
-  border-bottom: 2px solid #5dbb63;
-}
-
 .form-signin {
   width: 100%;
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
-}
-
-.form-signin .checkbox {
-  font-weight: 400;
+  max-width: 360px;
+  padding: 2rem 1.75rem;
+  margin: 2rem auto;
+  background-color: var(--ce-bg-card);
+  border: 1px solid var(--ce-border);
+  border-radius: var(--ce-radius-xl);
 }
 
 .form-signin .form-control {
   position: relative;
   box-sizing: border-box;
-  height: auto;
   padding: 10px;
   font-size: 16px;
 }
@@ -69,12 +58,11 @@
 }
 
 .form-signin input[type="password"] {
-  margin-bottom: 10px;
+  margin-bottom: 16px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 
-.form-signin .btn-primary {
-  background-color: #52661f;
-  border-color: #52661f;
+.form-signin a {
+  color: var(--ce-gold);
 }

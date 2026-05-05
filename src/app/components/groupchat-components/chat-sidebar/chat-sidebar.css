@@ -1,7 +1,7 @@
 .sidebar {
   width: 220px;
   min-width: 180px;
-  background-color: #2e4832;
+  background-color: var(--ce-bg-card);
   padding: 20px 12px;
   display: flex;
   flex-direction: column;
@@ -13,17 +13,17 @@
 .sidebar-title {
   font-size: 1rem;
   font-weight: bold;
-  color: #ccc;
+  color: var(--ce-text-sub);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin: 0 0 8px;
   padding-bottom: 8px;
-  border-bottom: 1px solid #3d5c42;
+  border-bottom: 1px solid var(--ce-border);
 }
 
 .sidebar-loading,
 .sidebar-empty {
-  color: #888;
+  color: var(--ce-text-muted);
   font-size: 0.85rem;
 }
 
@@ -41,21 +41,21 @@
   align-items: center;
   gap: 8px;
   padding: 8px 10px;
-  border-radius: 6px;
+  border-radius: var(--ce-radius-md);
   cursor: pointer;
-  color: #ccc;
+  color: var(--ce-text-sub);
   font-size: 0.9rem;
-  transition: background-color 0.15s ease;
+  transition: background-color var(--ce-transition);
 }
 
 .chat-item:hover {
-  background-color: #3d5c42;
-  color: white;
+  background-color: var(--ce-border);
+  color: var(--ce-text-primary);
 }
 
 .chat-item.active {
-  background-color: rgb(86, 134, 85);
-  color: white;
+  background-color: var(--ce-green);
+  color: var(--ce-text-primary);
 }
 
 .chat-icon {
