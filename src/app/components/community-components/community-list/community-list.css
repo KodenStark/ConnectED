@@ -81,7 +81,7 @@
   align-items: center;
   justify-content: center;
   font-size: 1.4rem;
-  color: #fff;
+  color: var(--ce-green);
 }
 
 .card-info {
@@ -113,7 +113,7 @@
 .join-btn {
   margin-top: auto;
   background-color: var(--ce-gold);
-  color: #fff;
+  color: var(--ce-green);
   border: none;
   border-radius: var(--ce-radius-md);
   padding: 10px;
@@ -124,6 +124,7 @@
 
 .join-btn:hover {
   background-color: var(--ce-green);
+  color: #fff;
 }
 
 .section {

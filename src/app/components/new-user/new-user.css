@@ -15,7 +15,7 @@
 }
 
 .form-signin a {
-  color: var(--ce-gold);
+  color: var(--ce-green);
 }
 
 .modal-backdrop {
@@ -82,7 +82,7 @@
 .role-pill.active {
   background: var(--ce-gold);
   border-color: var(--ce-gold);
-  color: #fff;
+  color: var(--ce-green);
 }
 
 .role-pill:hover:not(.active) {

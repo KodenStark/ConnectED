@@ -81,7 +81,7 @@
 
 .like-btn {
   background: none;
-  border: 1px solid #555;
+  border: 1px solid var(--ce-border);
   color: var(--ce-text-sub);
   border-radius: var(--ce-radius-pill);
   padding: 3px 10px;
@@ -106,13 +106,13 @@
 
 .open-chat {
   font-size: 0.82rem;
-  color: var(--ce-gold);
+  color: var(--ce-green);
   text-decoration: none;
   margin-left: auto;
 }
 
 .open-chat:hover {
   text-decoration: underline;
-  color: var(--ce-green);
+  color: var(--ce-green-dark);
 }
 

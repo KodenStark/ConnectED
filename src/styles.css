@@ -7,32 +7,32 @@
 /* ── Design Tokens ───────────────────────────────────────────── */
 :root {
   /* Surface scale */
-  --ce-bg-page:        #1a2b1c;
-  --ce-bg-surface:     #263829;
-  --ce-bg-card:        #2e4832;
-  --ce-bg-card-hover:  #364f3a;
-  --ce-bg-input:       #1e2d20;
+  --ce-bg-page:        #f0f4f0;
+  --ce-bg-surface:     #ffffff;
+  --ce-bg-card:        #ffffff;
+  --ce-bg-card-hover:  #f5f9f5;
+  --ce-bg-input:       #f5f7f5;
 
   /* Borders */
-  --ce-border:         #3d5c42;
-  --ce-border-focus:   #567955;
+  --ce-border:         #c8d8c8;
+  --ce-border-focus:   #005030;
 
-  /* Brand accents */
-  --ce-gold:           #b79c4b;
-  --ce-green:          #567955;
-  --ce-green-dark:     #3c643c;
-  --ce-navy:           #1f305e;
+  /* Brand accents — NDSU official palette */
+  --ce-gold:           #FFC72C;
+  --ce-green:          #005030;
+  --ce-green-dark:     #003d24;
+  --ce-navy:           #005030;
 
   /* Typography */
-  --ce-text-primary:   #ffffff;
-  --ce-text-body:      #dddddd;
-  --ce-text-sub:       #aaaaaa;
-  --ce-text-muted:     #888888;
+  --ce-text-primary:   #1a1a1a;
+  --ce-text-body:      #333333;
+  --ce-text-sub:       #555555;
+  --ce-text-muted:     #777777;
 
   /* Status */
-  --ce-error-bg:       #5c2020;
-  --ce-error-text:     #ffaaaa;
-  --ce-success-text:   #567955;
+  --ce-error-bg:       #fdf0f0;
+  --ce-error-text:     #c0392b;
+  --ce-success-text:   #005030;
 
   /* Border-radius */
   --ce-radius-sm:      4px;
@@ -53,10 +53,13 @@ body {
 
 /* ── Bootstrap 5 Overrides ───────────────────────────────────── */
 .btn-primary {
-  --bs-btn-bg:                  var(--ce-gold);
-  --bs-btn-border-color:        var(--ce-gold);
-  --bs-btn-hover-bg:            var(--ce-green);
-  --bs-btn-hover-border-color:  var(--ce-green);
+  --bs-btn-color:               #fff;
+  --bs-btn-bg:                  var(--ce-green);
+  --bs-btn-border-color:        var(--ce-green);
+  --bs-btn-hover-color:         #fff;
+  --bs-btn-hover-bg:            var(--ce-green-dark);
+  --bs-btn-hover-border-color:  var(--ce-green-dark);
+  --bs-btn-active-color:        #fff;
   --bs-btn-active-bg:           var(--ce-green-dark);
   --bs-btn-active-border-color: var(--ce-green-dark);
 }
@@ -64,8 +67,10 @@ body {
 .btn-outline-success {
   --bs-btn-color:               var(--ce-green);
   --bs-btn-border-color:        var(--ce-green);
+  --bs-btn-hover-color:         #fff;
   --bs-btn-hover-bg:            var(--ce-green);
   --bs-btn-hover-border-color:  var(--ce-green);
+  --bs-btn-active-color:        #fff;
   --bs-btn-active-bg:           var(--ce-green-dark);
 }
 
@@ -97,7 +102,7 @@ body {
   background-color: var(--ce-bg-input);
   color:            var(--ce-text-primary);
   border-color:     var(--ce-green);
-  box-shadow: 0 0 0 0.2rem rgba(86, 121, 85, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(0, 80, 48, 0.2);
 }
 
 .form-control::placeholder {

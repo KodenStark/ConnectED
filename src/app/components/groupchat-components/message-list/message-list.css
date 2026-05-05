@@ -33,6 +33,7 @@
 
 .post-card {
   background-color: var(--ce-bg-card);
+  border: 1px solid var(--ce-border);
   border-radius: var(--ce-radius-lg);
   padding: 14px;
   display: flex;
@@ -129,7 +130,7 @@
 
 .like-btn {
   background: none;
-  border: 1px solid #555;
+  border: 1px solid var(--ce-border);
   color: var(--ce-text-sub);
   border-radius: var(--ce-radius-pill);
   padding: 3px 10px;

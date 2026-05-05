@@ -112,7 +112,7 @@
 
 .type-btn.active {
   background-color: var(--ce-gold);
-  color: #fff;
+  color: var(--ce-green);
   border-color: var(--ce-gold);
   font-weight: 600;
 }
@@ -137,7 +137,7 @@
 
 .submit-btn {
   background-color: var(--ce-gold);
-  color: #fff;
+  color: var(--ce-green);
   border: none;
   border-radius: var(--ce-radius-md);
   padding: 10px 20px;
@@ -148,6 +148,7 @@
 
 .submit-btn:hover:not(:disabled) {
   background-color: var(--ce-green);
+  color: #fff;
 }
 
 .submit-btn:disabled {
@@ -209,7 +210,7 @@
   align-items: center;
   justify-content: center;
   font-size: 1.4rem;
-  color: #fff;
+  color: var(--ce-green);
   flex-shrink: 0;
 }
 
@@ -246,14 +247,14 @@
 
 .course-number {
   font-size: 0.8rem;
-  color: var(--ce-gold);
+  color: var(--ce-green);
   font-weight: bold;
 }
 
 .join-btn {
   margin-top: auto;
   background-color: var(--ce-gold);
-  color: #fff;
+  color: var(--ce-green);
   border: none;
   border-radius: var(--ce-radius-md);
   padding: 10px;
@@ -264,6 +265,7 @@
 
 .join-btn:hover {
   background-color: var(--ce-green);
+  color: #fff;
 }
 
 .join-btn.joined {

@@ -38,7 +38,7 @@
 
 .not-member-badge {
   font-size: 0.8rem;
-  color: var(--ce-gold);
+  color: var(--ce-green);
   border: 1px solid var(--ce-gold);
   padding: 2px 8px;
   border-radius: var(--ce-radius-sm);

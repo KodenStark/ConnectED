@@ -7,47 +7,65 @@
   font-family: 'Verdana', sans-serif;
   font-size: 22px;
   font-weight: bold;
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 6px 12px !important;
-  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 #connect {
-  color: var(--ce-gold);
+  color: #005030;
   letter-spacing: -1px;
 }
 
 #ed {
-  background-color: #52661f;
-  color: #fff;
+  background-color: #FFC72C;
+  color: #005030;
   padding: 2px 8px;
   border-radius: var(--ce-radius-md);
   margin-left: 2px;
+  font-weight: 800;
 }
 
 .navbar-link {
   text-decoration: none;
 }
 
+/* White card — maximum readability against dark page background */
 .form-signin {
   width: 100%;
   max-width: 360px;
   padding: 2rem 1.75rem;
   margin: 2rem auto;
-  background-color: var(--ce-bg-card);
-  border: 1px solid var(--ce-border);
+  background-color: #ffffff;
+  border: 1px solid #d0d0d0;
   border-radius: var(--ce-radius-xl);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+  color: #1a1a1a;
 }
 
+.form-signin h1,
+.form-signin h2,
+.form-signin h3 {
+  color: #005030;
+}
+
+/* Override global dark form-control styles inside the white card */
 .form-signin .form-control {
   position: relative;
   box-sizing: border-box;
   padding: 10px;
   font-size: 16px;
+  background-color: #f5f7f5;
+  color: #1a1a1a;
+  border-color: #b0c4b0;
+}
+
+.form-signin .form-control::placeholder {
+  color: #6b6b6b;
 }
 
 .form-signin .form-control:focus {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  border-color: #005030;
+  box-shadow: 0 0 0 0.2rem rgba(0, 80, 48, 0.2);
   z-index: 2;
 }
 
@@ -63,6 +81,20 @@
   border-top-right-radius: 0;
 }
 
+/* NDSU green sign-in button */
+.form-signin .btn-primary {
+  --bs-btn-color:              #fff;
+  --bs-btn-bg:                 #005030;
+  --bs-btn-border-color:       #005030;
+  --bs-btn-hover-color:        #fff;
+  --bs-btn-hover-bg:           #007048;
+  --bs-btn-hover-border-color: #007048;
+  --bs-btn-active-color:       #fff;
+  --bs-btn-active-bg:          #003d24;
+  --bs-btn-active-border-color:#003d24;
+}
+
 .form-signin a {
-  color: var(--ce-gold);
+  color: #005030;
+  font-weight: 500;
 }

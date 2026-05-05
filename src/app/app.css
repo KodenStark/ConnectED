@@ -1,18 +1,19 @@
 #nav {
-  background-color: var(--ce-navy);
+  background-color: var(--ce-green);
 }
 
 #connect {
-  color: var(--ce-gold);
+  color: var(--ce-green);
   letter-spacing: -1px;
 }
 
 #ed {
-  background-color: #52661f;
-  color: #fff;
+  background-color: var(--ce-gold);
+  color: var(--ce-green);
   padding: 2px 8px;
   border-radius: var(--ce-radius-md);
   margin-left: 2px;
+  font-weight: 800;
 }
 
 #logo {
@@ -32,13 +33,13 @@
 }
 
 .custom-link {
-  color: #5dbb63;
+  color: #ffffff;
   font-weight: 600;
   padding: 8px 16px;
   transition: color var(--ce-transition);
 }
 
 .custom-link:hover {
-  color: #fff !important;
-  border-bottom: 2px solid #5dbb63;
+  color: var(--ce-gold) !important;
+  border-bottom: 2px solid var(--ce-gold);
 }

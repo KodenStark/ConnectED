@@ -46,7 +46,7 @@
 
 .composer-btn {
   background-color: var(--ce-gold);
-  color: #fff;
+  color: var(--ce-green);
   border: none;
   border-radius: var(--ce-radius-md);
   padding: 8px 20px;
@@ -57,6 +57,7 @@
 
 .composer-btn:hover:not(:disabled) {
   background-color: var(--ce-green);
+  color: #fff;
 }
 
 .composer-btn:disabled {

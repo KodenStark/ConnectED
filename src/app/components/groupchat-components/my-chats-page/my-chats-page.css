@@ -44,7 +44,7 @@
 
 .browse-btn {
   background-color: var(--ce-gold);
-  color: #fff;
+  color: var(--ce-green);
   text-decoration: none;
   padding: 10px 24px;
   border-radius: var(--ce-radius-md);
@@ -97,7 +97,7 @@
 
 .card-icon.course {
   background-color: var(--ce-gold);
-  color: #fff;
+  color: var(--ce-green);
 }
 
 .card-icon.user {
@@ -125,7 +125,7 @@
 
 .card-course {
   font-size: 0.8rem;
-  color: var(--ce-gold);
+  color: var(--ce-green);
   font-weight: 600;
 }
 
