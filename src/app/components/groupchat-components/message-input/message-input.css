@@ -1,0 +1,66 @@
+.composer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 16px;
+  background-color: var(--ce-bg-surface);
+  border-top: 1px solid var(--ce-border);
+}
+
+.composer-input {
+  width: 100%;
+  background-color: var(--ce-bg-input);
+  color: var(--ce-text-body);
+  border: 1px solid var(--ce-border);
+  border-radius: var(--ce-radius-md);
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  resize: vertical;
+  min-height: 60px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.composer-input:focus {
+  outline: none;
+  border-color: var(--ce-green);
+}
+
+.composer-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.composer-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.composer-hint {
+  color: var(--ce-text-muted);
+  font-size: 0.82rem;
+  flex: 1;
+}
+
+.composer-btn {
+  background-color: var(--ce-gold);
+  color: var(--ce-green);
+  border: none;
+  border-radius: var(--ce-radius-md);
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color var(--ce-transition);
+}
+
+.composer-btn:hover:not(:disabled) {
+  background-color: var(--ce-green);
+  color: #fff;
+}
+
+.composer-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

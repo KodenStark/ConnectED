@@ -1,13 +1,25 @@
 .feed-container {
-  display: flex; /* stacks post cards vertically */
+  display: flex;
   flex-direction: column;
-  gap: 16px; /* space between each post card */
-  max-width: 100%; /* keeps the feed from stretching too wide */
+  gap: 16px;
+  max-width: 100%;
+}
+
+.feed-state {
+  color: var(--ce-text-muted);
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 12px 0;
+}
+
+.feed-error {
+  color: var(--ce-error-text);
 }
 
 .post-card {
-  background-color: #506955; /* slightly lighter than the page background */
-  border-radius: 8px;
+  background-color: var(--ce-bg-card);
+  border: 1px solid var(--ce-border);
+  border-radius: var(--ce-radius-lg);
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -15,14 +27,14 @@
 }
 
 .post-header {
-  display: flex; /* puts avatar and meta info side by side */
+  display: flex;
   align-items: flex-start;
   gap: 12px;
 }
 
 .avatar {
-  font-size: 2.5rem; /* makes the person icon large */
-  color: #888;
+  font-size: 2.5rem;
+  color: var(--ce-text-muted);
 }
 
 .post-meta {
@@ -39,48 +51,68 @@
 
 .username {
   font-weight: bold;
-  color: white;
+  color: var(--ce-text-primary);
 }
 
 .community-badge {
   font-size: 0.7rem;
-  color: #aaa;
-  border: 1px solid #aaa;
+  color: var(--ce-text-sub);
+  border: 1px solid var(--ce-border);
   padding: 1px 6px;
-  border-radius: 4px;
+  border-radius: var(--ce-radius-sm);
 }
 
 .post-date {
-  color: #aaa;
+  color: var(--ce-text-sub);
   font-size: 0.85rem;
 }
 
-.role-label.student {
-  color: #ff69b4; /* pink for students */
-}
-
-.role-label.teacher {
-  color: #ffd700; /* yellow for teachers */
-}
-
 .post-body {
-  color: #ddd;
+  color: var(--ce-text-body);
   font-size: 0.95rem;
   line-height: 1.5;
 }
 
-.mention {
-  color: #4da6ff; /* blue for @mentions */
-}
-
 .post-actions {
   display: flex;
-  gap: 6px;
-  color: #888;
-  font-size: 0.85rem;
+  align-items: center;
+  gap: 10px;
 }
 
-.post-actions span:not(.dot):hover {
-  color: white; /* highlights action links on hover */
+.like-btn {
+  background: none;
+  border: 1px solid var(--ce-border);
+  color: var(--ce-text-sub);
+  border-radius: var(--ce-radius-pill);
+  padding: 3px 10px;
+  font-size: 0.82rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s ease;
 }
+
+.like-btn:hover {
+  border-color: #e05;
+  color: #e05;
+}
+
+.like-btn.liked {
+  background-color: rgba(238, 0, 85, 0.12);
+  border-color: #e05;
+  color: #e05;
+}
+
+.open-chat {
+  font-size: 0.82rem;
+  color: var(--ce-green);
+  text-decoration: none;
+  margin-left: auto;
+}
+
+.open-chat:hover {
+  text-decoration: underline;
+  color: var(--ce-green-dark);
+}
+

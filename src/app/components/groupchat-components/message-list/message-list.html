@@ -1,1 +1,65 @@
-<p>message-list works!</p>
+<div class="post-thread">
+  @if (error()) {
+    <p class="thread-error">{{ error() }}</p>
+  }
+
+  @if (loading()) {
+    <p class="thread-state">Loading posts...</p>
+  } @else if (posts().length === 0) {
+    <p class="thread-state">No posts yet. Be the first to post!</p>
+  } @else {
+    <div class="posts">
+      @for (post of posts(); track post.id) {
+        <div class="post-card">
+          <div class="post-header">
+            <i class="bi bi-person-circle avatar"></i>
+            <div class="post-meta">
+              <div class="post-top-row">
+                <span class="username">{{ post.authorName }}</span>
+                <span class="post-date">{{ formatDate(post.createdAt) }}</span>
+                @if (post.updatedAt !== post.createdAt) {
+                  <span class="post-edited">(edited)</span>
+                }
+              </div>
+            </div>
+          </div>
+
+          @if (editingPostId() === post.id) {
+            <div class="edit-area">
+              <textarea class="edit-input" [(ngModel)]="editBody" rows="3"></textarea>
+              <div class="edit-actions">
+                <button class="action-btn save" (click)="submitEdit(post)">Save</button>
+                <button class="action-btn cancel" (click)="cancelEdit()">Cancel</button>
+              </div>
+            </div>
+          } @else {
+            <p class="post-body">{{ post.body }}</p>
+          }
+
+          <div class="post-actions">
+            <button
+              class="like-btn"
+              [class.liked]="currentUserId && post.likedByUserIds.includes(currentUserId)"
+              (click)="onLike(post)"
+            >
+              <i class="bi bi-heart-fill"></i> {{ post.likeCount }}
+            </button>
+            @if (currentUserId === post.authorId) {
+              <button class="action-btn edit" (click)="startEdit(post)">
+                <i class="bi bi-pencil"></i> Edit
+              </button>
+              <button class="action-btn delete" (click)="onDelete(post)">
+                <i class="bi bi-trash"></i> Delete
+              </button>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  }
+
+  <app-message-input
+    [disabled]="!isMember"
+    (postSubmit)="onPostSubmit($event)"
+  ></app-message-input>
+</div>

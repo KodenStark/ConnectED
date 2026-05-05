@@ -1,0 +1,145 @@
+.my-chats-container {
+  min-height: 100vh;
+  background-color: var(--ce-bg-page);
+  color: var(--ce-text-primary);
+  padding: 32px 28px;
+}
+
+.page-header {
+  margin-bottom: 28px;
+}
+
+.page-title {
+  font-size: 1.9rem;
+  font-weight: bold;
+  color: var(--ce-text-primary);
+  margin: 0 0 4px;
+}
+
+.page-subtitle {
+  color: var(--ce-text-sub);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.state-msg {
+  color: var(--ce-text-muted);
+  font-size: 0.95rem;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 80px;
+  color: var(--ce-text-muted);
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 3.5rem;
+  color: var(--ce-border);
+}
+
+.browse-btn {
+  background-color: var(--ce-gold);
+  color: var(--ce-green);
+  text-decoration: none;
+  padding: 10px 24px;
+  border-radius: var(--ce-radius-md);
+  font-size: 0.9rem;
+  transition: background-color var(--ce-transition);
+}
+
+.browse-btn:hover {
+  background-color: var(--ce-green);
+  color: #fff;
+}
+
+.chats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  max-width: 960px;
+}
+
+.chat-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--ce-bg-card);
+  border: 1px solid var(--ce-border);
+  border-radius: var(--ce-radius-lg);
+  padding: 18px 16px;
+  text-decoration: none;
+  color: var(--ce-text-primary);
+  transition: border-color var(--ce-transition), background-color var(--ce-transition);
+  cursor: pointer;
+}
+
+.chat-card:hover {
+  border-color: var(--ce-green);
+  background-color: var(--ce-bg-card-hover);
+  color: var(--ce-text-primary);
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.card-icon.course {
+  background-color: var(--ce-gold);
+  color: var(--ce-green);
+}
+
+.card-icon.user {
+  background-color: var(--ce-green);
+  color: #fff;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.card-name {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+  color: var(--ce-text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-course {
+  font-size: 0.8rem;
+  color: var(--ce-green);
+  font-weight: 600;
+}
+
+.card-members {
+  font-size: 0.8rem;
+  color: var(--ce-text-sub);
+}
+
+.card-arrow {
+  color: var(--ce-text-muted);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.chat-card:hover .card-arrow {
+  color: var(--ce-text-sub);
+}

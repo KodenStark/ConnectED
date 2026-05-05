@@ -1,1 +1,21 @@
-<p>chat-sidebar works!</p>
+<aside class="sidebar">
+  <h2 class="sidebar-title">My Chats</h2>
+  @if (loading()) {
+    <p class="sidebar-loading">Loading...</p>
+  } @else if (chats().length === 0) {
+    <p class="sidebar-empty">No chats joined yet.</p>
+  } @else {
+    <ul class="chat-list">
+      @for (chat of chats(); track chat.id) {
+        <li
+          class="chat-item"
+          [class.active]="activeChatId === chat.id"
+          [routerLink]="['/groupchat', chat.id]"
+        >
+          <i class="bi bi-chat-left-fill chat-icon"></i>
+          <span class="chat-name">{{ chat.name }}</span>
+        </li>
+      }
+    </ul>
+  }
+</aside>

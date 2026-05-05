@@ -1,0 +1,24 @@
+<div class="chat-page">
+  <app-chat-sidebar [activeChatId]="chatId()"></app-chat-sidebar>
+
+  <main class="chat-main">
+    @if (loading()) {
+      <p class="chat-state">Loading chat...</p>
+    } @else if (!chatId()) {
+      <p class="chat-state">Chat not found.</p>
+    } @else {
+      <header class="chat-header">
+        <h1 class="chat-title">{{ chatName() }}</h1>
+        @if (!isMember()) {
+          <span class="not-member-badge">You are not a member of this chat</span>
+        }
+      </header>
+
+      <app-message-list
+        [groupChatId]="chatId()!"
+        [communityId]="communityId()"
+        [isMember]="isMember()"
+      ></app-message-list>
+    }
+  </main>
+</div>

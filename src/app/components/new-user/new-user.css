@@ -1,22 +1,42 @@
+.form-signin {
+  width: 100%;
+  max-width: 420px;
+  padding: 2rem 1.75rem;
+  margin: 2rem auto;
+  background-color: var(--ce-bg-card);
+  border: 1px solid var(--ce-border);
+  border-radius: var(--ce-radius-xl);
+}
+
 .form-signin input[type="text"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
+
+.form-signin a {
+  color: var(--ce-green);
+}
+
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.55);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1050;
 }
+
 .modal-card {
   width: min(420px, 90vw);
-  background: white;
-  padding: 1.5rem;
-  border-radius: 12px;
+  background: var(--ce-bg-card);
+  border: 1px solid var(--ce-border);
+  padding: 1.75rem;
+  border-radius: var(--ce-radius-xl);
+  color: var(--ce-text-primary);
 }
+
 .option-field {
   display: flex;
   flex-direction: column;
@@ -24,14 +44,18 @@
   gap: 8px;
   margin-bottom: 10px;
 }
+
 .option-label {
   margin: 0;
   font-weight: 600;
   font-size: 0.95rem;
+  color: var(--ce-text-sub);
 }
+
 .option-select {
   width: 100%;
 }
+
 .add-option-btn {
   align-self: flex-start;
   margin: 0;
@@ -46,14 +70,22 @@
 }
 
 .role-pill {
-  border: 1px solid #c9ced6;
-  border-radius: 999px;
-  background: #fff;
+  border: 1px solid var(--ce-border);
+  border-radius: var(--ce-radius-pill);
+  background: transparent;
+  color: var(--ce-text-sub);
   padding: 0.35rem 0.85rem;
+  cursor: pointer;
+  transition: all var(--ce-transition);
 }
 
 .role-pill.active {
-  background: #0d6efd;
-  border-color: #0d6efd;
-  color: #fff;
+  background: var(--ce-gold);
+  border-color: var(--ce-gold);
+  color: var(--ce-green);
+}
+
+.role-pill:hover:not(.active) {
+  border-color: var(--ce-green);
+  color: var(--ce-text-primary);
 }

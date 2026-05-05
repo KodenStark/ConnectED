@@ -1,33 +1,37 @@
-import { Component, inject, signal, Input } from '@angular/core';
+import { Component, inject, signal, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FirebaseService } from '../../../services/firebase';
 
-interface SidebarChat {
+interface JoinedChat {
   id: string;
   name: string;
+  communityId: string;
+  chatType: string;
+  courseNumber: string;
+  memberCount: number;
 }
 
 @Component({
-  selector: 'app-chat-sidebar',
+  selector: 'app-my-chats-page',
   imports: [RouterLink],
-  templateUrl: './chat-sidebar.html',
-  styleUrl: './chat-sidebar.css',
+  templateUrl: './my-chats-page.html',
+  styleUrl: './my-chats-page.css',
 })
-export class ChatSidebar {
+export class MyChatsPage implements OnInit {
   private firebase = inject(FirebaseService);
 
-  @Input() activeChatId: string | null = null;
-
-  chats = signal<SidebarChat[]>([]);
+  chats = signal<JoinedChat[]>([]);
   loading = signal(true);
 
   async ngOnInit(): Promise<void> {
     const ids = await this.firebase.getUserGroupChats();
-    const resolved: SidebarChat[] = [];
+    const resolved: JoinedChat[] = [];
+
     for (const id of ids) {
       const info = await this.firebase.getGroupChatInfo(id);
-      if (info) resolved.push({ id: info.id, name: info.name });
+      if (info) resolved.push(info);
     }
+
     this.chats.set(resolved);
     this.loading.set(false);
   }

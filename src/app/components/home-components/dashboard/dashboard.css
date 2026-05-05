@@ -1,30 +1,28 @@
 .dashboard-container {
   min-height: 100vh;
-  height: 100vh; /* lock the container to the viewport height */
-  background-color: beige;
-  color: white;
-  padding: 20px;
-  overflow-y: auto; /* this is what enables scrolling */
+  background-color: var(--ce-bg-page);
+  color: var(--ce-text-primary);
+  padding: 32px 24px;
+  overflow-y: auto;
 }
 
-.icon {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background-color: rgb(183, 156, 75);
-  color: white;
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  cursor: pointer;
+.dashboard-header {
+  margin-bottom: 24px;
 }
 
-.icon:hover {
-  background-color: rgb(86, 134, 85);
-  transform: scale(1.2);
-  transition: all 0.2s ease;
+.dashboard-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--ce-text-primary);
+  margin: 0 0 4px;
+}
+
+.dashboard-subtitle {
+  color: var(--ce-text-sub);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.feed-wrapper {
+  max-width: 720px;
 }
