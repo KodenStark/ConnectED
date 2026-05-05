@@ -1,9 +1,35 @@
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">latest posts</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
+<div class="feed-container">
+  @if (loading()) {
+    <p class="feed-state">Loading posts...</p>
+  } @else if (error()) {
+    <p class="feed-state feed-error">{{ error() }}</p>
+  } @else if (posts().length === 0) {
+    <p class="feed-state">No posts yet. Join a group chat and start the conversation!</p>
+  } @else {
+    @for (post of posts(); track post.id) {
+      <div class="post-card">
+        <div class="post-header">
+          <i class="bi bi-person-circle avatar"></i>
+          <div class="post-meta">
+            <div class="post-top-row">
+              <span class="username">{{ post.authorName }}</span>
+              <span class="community-badge">{{ post.groupChatId }}</span>
+            </div>
+            <span class="post-date">{{ formatDate(post.createdAt) }}</span>
+          </div>
+        </div>
+        <p class="post-body">{{ post.body }}</p>
+        <div class="post-actions">
+          <button
+            class="like-btn"
+            [class.liked]="post.likedByUserIds.includes(firebase.currentUser()?.uid ?? '')"
+            (click)="onLike(post)"
+          >
+            <i class="bi bi-heart-fill"></i> {{ post.likeCount }}
+          </button>
+          <a class="open-chat" [routerLink]="['/groupchat', post.groupChatId]">Open Chat &rarr;</a>
+        </div>
+      </div>
+    }
+  }
 </div>

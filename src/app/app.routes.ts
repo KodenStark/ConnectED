@@ -3,6 +3,7 @@ import { Dashboard } from './components/home-components/dashboard/dashboard';
 import { CommunityList } from './components/community-components/community-list/community-list';
 import { GroupCard } from './components/community-components/group-card/group-card';
 import { MessageList } from './components/groupchat-components/message-list/message-list';
+import { GroupChatPage } from './components/groupchat-components/group-chat-page/group-chat-page';
 import { NewsFeed } from './components/news-components/news-feed/news-feed';
 import { Login } from './components/login/login';
 import { authGuard } from './guards/auth.guard';
@@ -35,6 +36,12 @@ export const routes: Routes = [
   {
     path: 'groupchat',
     component: MessageList,
+    title: 'Group Chats',
+    canActivate: [authGuard],
+  },
+  {
+    path: 'groupchat/:id',
+    component: GroupChatPage,
     title: 'Group Chat',
     canActivate: [authGuard],
   },

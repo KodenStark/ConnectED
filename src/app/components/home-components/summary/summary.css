@@ -1,9 +1,120 @@
 .feed-container {
-  display: flex; /* stacks post cards vertically */
+  display: flex;
   flex-direction: column;
-  gap: 16px; /* space between each post card */
-  max-width: 100%; /* keeps the feed from stretching too wide */
+  gap: 16px;
+  max-width: 100%;
 }
+
+.feed-state {
+  color: #888;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 12px 0;
+}
+
+.feed-error {
+  color: #ffaaaa;
+}
+
+.post-card {
+  background-color: #506955;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.post-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.avatar {
+  font-size: 2.5rem;
+  color: #888;
+}
+
+.post-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.post-top-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.username {
+  font-weight: bold;
+  color: white;
+}
+
+.community-badge {
+  font-size: 0.7rem;
+  color: #aaa;
+  border: 1px solid #aaa;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.post-date {
+  color: #aaa;
+  font-size: 0.85rem;
+}
+
+.post-body {
+  color: #ddd;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.post-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.like-btn {
+  background: none;
+  border: 1px solid #555;
+  color: #aaa;
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s ease;
+}
+
+.like-btn:hover {
+  border-color: #e05;
+  color: #e05;
+}
+
+.like-btn.liked {
+  background-color: rgba(238, 0, 85, 0.12);
+  border-color: #e05;
+  color: #e05;
+}
+
+.open-chat {
+  font-size: 0.82rem;
+  color: rgb(183, 156, 75);
+  text-decoration: none;
+  margin-left: auto;
+}
+
+.open-chat:hover {
+  text-decoration: underline;
+  color: rgb(86, 134, 85);
+}
+
 
 .post-card {
   background-color: #506955; /* slightly lighter than the page background */

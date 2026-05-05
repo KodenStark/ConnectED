@@ -1,1 +1,22 @@
-<p>message-input works!</p>
+<form class="composer" (ngSubmit)="onSubmit()">
+  <textarea
+    class="composer-input"
+    [(ngModel)]="body"
+    name="body"
+    [placeholder]="placeholder"
+    [disabled]="disabled || submitting()"
+    rows="3"
+  ></textarea>
+  <div class="composer-footer">
+    @if (disabled) {
+      <span class="composer-hint">Join this chat to post.</span>
+    }
+    <button
+      type="submit"
+      class="composer-btn"
+      [disabled]="!body.trim() || disabled || submitting()"
+    >
+      {{ submitting() ? 'Posting...' : 'Post' }}
+    </button>
+  </div>
+</form>

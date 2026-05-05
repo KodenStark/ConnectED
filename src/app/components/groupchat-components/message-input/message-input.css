@@ -1,0 +1,65 @@
+.composer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 16px;
+  background-color: #263829;
+  border-top: 1px solid #3d5c42;
+}
+
+.composer-input {
+  width: 100%;
+  background-color: #1e2d20;
+  color: #e0e0e0;
+  border: 1px solid #3d5c42;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  resize: vertical;
+  min-height: 60px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.composer-input:focus {
+  outline: none;
+  border-color: rgb(86, 134, 85);
+}
+
+.composer-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.composer-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.composer-hint {
+  color: #888;
+  font-size: 0.82rem;
+  flex: 1;
+}
+
+.composer-btn {
+  background-color: rgb(183, 156, 75);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.composer-btn:hover:not(:disabled) {
+  background-color: rgb(86, 134, 85);
+}
+
+.composer-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

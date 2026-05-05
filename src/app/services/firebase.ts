@@ -11,7 +11,13 @@ import {
   doc,
   updateDoc,
   arrayUnion,
+  arrayRemove,
   getDoc,
+  deleteDoc,
+  query,
+  orderBy,
+  limit,
+  where,
 } from 'firebase/firestore';
 import {
   User,
@@ -23,6 +29,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { UserProfile } from '../models/user-profile';
+import { Post, CreatePostPayload, UpdatePostPayload } from '../models/post';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBnr5uMi2VefhFImTcf5lRrCSg0Su4Ign0',
@@ -269,6 +276,193 @@ export class FirebaseService {
         this.currentFirestoreError.set(error.code + ': ' + error.message);
       }
       return [];
+    }
+  }
+
+  async isUserInGroupChat(groupChatId: string): Promise<boolean> {
+    const uid = this.currentUser()?.uid;
+    if (!uid) return false;
+    const joined = await this.getUserGroupChats();
+    return joined.includes(groupChatId);
+  }
+
+  async createGroupPost(payload: CreatePostPayload): Promise<Post | null> {
+    const user = this.currentUser();
+    if (!user) {
+      this.currentFirestoreError.set('No authenticated user.');
+      return null;
+    }
+
+    const isMember = await this.isUserInGroupChat(payload.groupChatId);
+    if (!isMember) {
+      this.currentFirestoreError.set('permission-denied: You must join the group chat before posting.');
+      return null;
+    }
+
+    const now = Date.now();
+    const postData: Omit<Post, 'id'> = {
+      groupChatId: payload.groupChatId,
+      communityId: payload.communityId,
+      authorId: user.uid,
+      authorName: user.displayName ?? user.email ?? 'Unknown',
+      authorRole: 'member',
+      body: payload.body,
+      likeCount: 0,
+      likedByUserIds: [],
+      createdAt: now,
+      updatedAt: now,
+    };
+
+    try {
+      const ref = await addDoc(collection(db, 'posts'), postData);
+      this.currentFirestoreError.set(null);
+      return { id: ref.id, ...postData };
+    } catch (error: unknown) {
+      if (error instanceof FirestoreError) {
+        this.currentFirestoreError.set(error.code + ': ' + error.message);
+      }
+      return null;
+    }
+  }
+
+  async getGroupPosts(groupChatId: string): Promise<Post[]> {
+    try {
+      const q = query(
+        collection(db, 'posts'),
+        where('groupChatId', '==', groupChatId),
+        orderBy('createdAt', 'asc'),
+      );
+      const snapshot = await getDocs(q);
+      this.currentFirestoreError.set(null);
+      return snapshot.docs.map((d) => ({ id: d.id, ...(d.data() as Omit<Post, 'id'>) }));
+    } catch (error: unknown) {
+      if (error instanceof FirestoreError) {
+        this.currentFirestoreError.set(error.code + ': ' + error.message);
+      }
+      return [];
+    }
+  }
+
+  async getLatestPosts(count = 20): Promise<Post[]> {
+    try {
+      const q = query(
+        collection(db, 'posts'),
+        orderBy('createdAt', 'desc'),
+        limit(count),
+      );
+      const snapshot = await getDocs(q);
+      this.currentFirestoreError.set(null);
+      return snapshot.docs.map((d) => ({ id: d.id, ...(d.data() as Omit<Post, 'id'>) }));
+    } catch (error: unknown) {
+      if (error instanceof FirestoreError) {
+        this.currentFirestoreError.set(error.code + ': ' + error.message);
+      }
+      return [];
+    }
+  }
+
+  async updateGroupPost(payload: UpdatePostPayload): Promise<boolean> {
+    const user = this.currentUser();
+    if (!user) {
+      this.currentFirestoreError.set('No authenticated user.');
+      return false;
+    }
+
+    try {
+      const ref = doc(db, 'posts', payload.id);
+      const snap = await getDoc(ref);
+      if (!snap.exists() || snap.data()['authorId'] !== user.uid) {
+        this.currentFirestoreError.set('permission-denied: You can only edit your own posts.');
+        return false;
+      }
+
+      await updateDoc(ref, { body: payload.body, updatedAt: Date.now() });
+      this.currentFirestoreError.set(null);
+      return true;
+    } catch (error: unknown) {
+      if (error instanceof FirestoreError) {
+        this.currentFirestoreError.set(error.code + ': ' + error.message);
+      }
+      return false;
+    }
+  }
+
+  async deleteGroupPost(postId: string): Promise<boolean> {
+    const user = this.currentUser();
+    if (!user) {
+      this.currentFirestoreError.set('No authenticated user.');
+      return false;
+    }
+
+    try {
+      const ref = doc(db, 'posts', postId);
+      const snap = await getDoc(ref);
+      if (!snap.exists() || snap.data()['authorId'] !== user.uid) {
+        this.currentFirestoreError.set('permission-denied: You can only delete your own posts.');
+        return false;
+      }
+
+      await deleteDoc(ref);
+      this.currentFirestoreError.set(null);
+      return true;
+    } catch (error: unknown) {
+      if (error instanceof FirestoreError) {
+        this.currentFirestoreError.set(error.code + ': ' + error.message);
+      }
+      return false;
+    }
+  }
+
+  async togglePostLike(postId: string): Promise<boolean> {
+    const user = this.currentUser();
+    if (!user) {
+      this.currentFirestoreError.set('No authenticated user.');
+      return false;
+    }
+
+    try {
+      const ref = doc(db, 'posts', postId);
+      const snap = await getDoc(ref);
+      if (!snap.exists()) {
+        this.currentFirestoreError.set('not-found: Post does not exist.');
+        return false;
+      }
+
+      const data = snap.data();
+      const liked: string[] = data['likedByUserIds'] ?? [];
+      const alreadyLiked = liked.includes(user.uid);
+
+      await updateDoc(ref, {
+        likedByUserIds: alreadyLiked ? arrayRemove(user.uid) : arrayUnion(user.uid),
+        likeCount: (data['likeCount'] ?? 0) + (alreadyLiked ? -1 : 1),
+      });
+
+      this.currentFirestoreError.set(null);
+      return true;
+    } catch (error: unknown) {
+      if (error instanceof FirestoreError) {
+        this.currentFirestoreError.set(error.code + ': ' + error.message);
+      }
+      return false;
+    }
+  }
+
+  async getGroupChatInfo(groupChatId: string): Promise<{ id: string; name: string; communityId: string } | null> {
+    try {
+      const snap = await getDoc(doc(db, 'groupchats', groupChatId));
+      if (!snap.exists()) return null;
+      const data = snap.data();
+      this.currentFirestoreError.set(null);
+      return {
+        id: snap.id,
+        name: String(data['name'] ?? ''),
+        communityId: String(data['communityId'] ?? ''),
+      };
+    } catch (error: unknown) {
+      if (error instanceof FirestoreError) {
+        this.currentFirestoreError.set(error.code + ': ' + error.message);
+      }
+      return null;
     }
   }
 }

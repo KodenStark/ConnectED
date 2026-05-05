@@ -1,0 +1,45 @@
+.chat-page {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #1e2d20;
+  color: white;
+}
+
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chat-state {
+  color: #888;
+  text-align: center;
+  margin: 40px 0;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #3d5c42;
+  background-color: #263829;
+  flex-shrink: 0;
+}
+
+.chat-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+}
+
+.not-member-badge {
+  font-size: 0.8rem;
+  color: rgb(183, 156, 75);
+  border: 1px solid rgb(183, 156, 75);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
