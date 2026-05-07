@@ -1,0 +1,11 @@
+{
+  "routes": {
+    "/KodenStark/ConnectED.git": {},
+    "/KodenStark/ConnectED.git/community": {},
+    "/KodenStark/ConnectED.git/groupchat": {},
+    "/KodenStark/ConnectED.git/login": {},
+    "/KodenStark/ConnectED.git/new-user": {},
+    "/KodenStark/ConnectED.git/news": {},
+    "/KodenStark/ConnectED.git/profile": {}
+  }
+}

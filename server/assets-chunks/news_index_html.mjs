@@ -1,0 +1,11 @@
+export default `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting</title>
+    <meta http-equiv="refresh" content="0; url=/KodenStark/ConnectED.git/login?redirectTo=%2Fnews">
+  </head>
+  <body>
+    <pre>Redirecting to <a href="/KodenStark/ConnectED.git/login?redirectTo=%2Fnews">/KodenStark/ConnectED.git/login?redirectTo=%2Fnews</a></pre>
+  </body>
+</html>`;
